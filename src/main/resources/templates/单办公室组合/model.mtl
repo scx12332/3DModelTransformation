@@ -1,0 +1,80 @@
+RVT TO OBJ    Created Time:2018/10/22 13:01
+
+newmtl 00BDBBB9
+ka 0.73828125 0.73046875 0.72265625
+Kd 0.73828125 0.73046875 0.72265625
+Ns 64
+d 1
+
+newmtl 00392F26
+ka 0.22265625 0.18359375 0.1484375
+Kd 0.22265625 0.18359375 0.1484375
+Ns 64
+d 1
+map_Kd Woods & Plastics.Finish Carpentry.Wood.Walnut.png
+
+newmtl 00B6B5B3
+ka 0.7109375 0.70703125 0.69921875
+Kd 0.7109375 0.70703125 0.69921875
+Ns 64
+d 1
+map_Kd Finishes.Painting.Paint.jpg
+map_Kd Finishes.Painting.Paint.Bump.jpg
+
+newmtl 007F7F7F
+ka 0.49609375 0.49609375 0.49609375
+Kd 0.49609375 0.49609375 0.49609375
+Ns 64
+d 1
+
+newmtl 00F4F4F4
+ka 0.953125 0.953125 0.953125
+Kd 0.953125 0.953125 0.953125
+Ns 64
+d 1
+map_Kd Metals.Ornamental Metals.Aluminum.Brushed.Random.png
+
+newmtl 00A8A8A8
+ka 0.65625 0.65625 0.65625
+Kd 0.65625 0.65625 0.65625
+Ns 64
+d 1
+
+newmtl 00000000
+ka 0 0 0
+Kd 0 0 0
+Ns 64
+d 1
+
+newmtl 00FFFFFF
+ka 0.99609375 0.99609375 0.99609375
+Kd 0.99609375 0.99609375 0.99609375
+Ns 64
+d 1
+
+newmtl 00626262
+ka 0.3828125 0.3828125 0.3828125
+Kd 0.3828125 0.3828125 0.3828125
+Ns 64
+d 1
+
+newmtl 00636864
+ka 0.38671875 0.40625 0.390625
+Kd 0.38671875 0.40625 0.390625
+Ns 64
+d 1
+map_Kd Furnishings.Fabrics.Leather.Black.png
+map_Kd Furnishings.Fabrics.Leather.Black.bump.png
+
+newmtl 00171717
+ka 0.08984375 0.08984375 0.08984375
+Kd 0.08984375 0.08984375 0.08984375
+Ns 64
+d 1
+map_Kd Furnishings.Fabrics.Linen.Tweed.jpg
+
+newmtl 00E3DFD2
+ka 0.88671875 0.87109375 0.8203125
+Kd 0.88671875 0.87109375 0.8203125
+Ns 64
+d 1

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>3D模型大全</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>模型名称</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="model : ${modelLists}">
+        <td th:text="${model.modelName}" th:name="modelName">模型名称</td>
+        <td><a th:href="@{'~/show/'+${model.modelName}}" />显示模型</td>
+    </tr>
+</table>
+</body>
+</html>

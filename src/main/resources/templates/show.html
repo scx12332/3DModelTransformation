@@ -1,9 +1,17 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="../../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../../js/three.js"></script>
+    <script type="text/javascript" src="../../js/TrackballControls.js"></script>
+    <script type="text/javascript" src="../../js/DDSLoader.js"></script>
+    <script type="text/javascript" src="../../js/OBJLoader.js"></script>
+    <script type="text/javascript" src="../../js/OBJMTLLoader.js"></script>
+    <script type="text/javascript" src="../../js/dat.gui.min.js"></script>
+    <script type="text/javascript" src="../../js/stats.min.js"></script>
+    <script type="text/javascript" src="../../js/OrbitControls.js"></script>
     <title>渲染</title>
-
     <style>
         body {
             margin: 0;
@@ -14,7 +22,6 @@
             display: block;
         }
     </style>
-
     <script>
         //直接开启帧数检测
         //编辑代码处
@@ -25,29 +32,31 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setClearColor(0xffffff);//告诉渲染器需要阴影效果
             document.body.appendChild(renderer.domElement);
+//renderer.shadowMapEnabled = true;//激活阴影
         }
 
         var camera;
         function initCamera() {
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);//相机构建
-            //渲染视图视角
+//渲染视图视角
             camera.position.set(0, 30, 50);
             camera.lookAt(new THREE.Vector3(0, 0, 0));
+// camera.lookAt(scene.position)
         }
+
 
         var scene;
         function initScene() {
             scene = new THREE.Scene();
         }
-
         //初始化dat.GUI简化试验流程
         var gui;
         function initGui() {
-            //声明一个保存需求修改的相关数据的对象
+//声明一个保存需求修改的相关数据的对象
             gui = {
             };
             var datGui = new dat.GUI();
-            //将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
+//将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
         }
 
         var light;
@@ -55,7 +64,7 @@
             scene.add(new THREE.AmbientLight(0x444444));
             light = new THREE.PointLight(0xffffff);
             light.position.set(0, 50, 0);
-            //告诉平行光需要开启阴影投射
+//告诉平行光需要开启阴影投射
             light.castShadow = true;
             scene.add(light);
         }
@@ -63,21 +72,31 @@
         // model
         //构建一个坐标轴
         function initModel() {
+// var axes = new THREE.AxisHelper(30);
+// scene.add(axes);
+
+// var onProgress = function(xhr) {
+// if (xhr.lengthComputable) {
+// var percentComplete = xhr.loaded / xhr.total * 100;
+// var percent = document.getElementById("percent");
+// percent.innerText = Math.round(percentComplete, 2) + '% 已经加载';
+// }
+// };
+// var onError = function(xhr) {};
             var mtlLoader = new THREE.MTLLoader();
-            mtlLoader.setPath('../static/单办公室组合/');
+            mtlLoader.setPath('../单办公室组合/');
             mtlLoader.load('model.mtl', function (materials) {
 
-                //materials.preload();
-
+//materials.preload();
                 var objLoader = new THREE.OBJLoader();
                 objLoader.setMaterials(materials);
-                objLoader.setPath('../static/单办公室组合/');
+                objLoader.setPath('../单办公室组合/');
                 objLoader.load('单办公室组合.obj', function (object) {
 
                     object.position.y = 0;
                     object.position.x = 0;
                     object.rotation.y = 0.5;
-                    //将模型缩放并添加到场景中
+//将模型缩放并添加到场景中
                     object.scale.set(2.5, 2.5, 2.5);
                     scene.add(object);
                 })
@@ -95,21 +114,21 @@
         var controls;
         function initControls() {
             controls = new THREE.OrbitControls(camera, renderer.domElement);
-            // 如果使用animate方法时，将此函数删除
-            //controls.addEventListener( 'change', render );
-            // 使动画循环使用时阻尼或自转 意思是否有惯性
+// 如果使用animate方法时，将此函数删除
+//controls.addEventListener( 'change', render );
+// 使动画循环使用时阻尼或自转 意思是否有惯性
             controls.enableDamping = true;
-            //动态阻尼系数 就是鼠标拖拽旋转灵敏度
-            //controls.dampingFactor = 0.25;
-            //是否可以缩放
+//动态阻尼系数 就是鼠标拖拽旋转灵敏度
+//controls.dampingFactor = 0.25;
+//是否可以缩放
             controls.enableZoom = true;
-            //是否自动旋转
-            controls.autoRotate = false;
-            //设置相机距离原点的最近距离
+//是否自动旋转
+            controls.autoRotate = true;
+//设置相机距离原点的最近距离
             controls.minDistance = 1;
-            //设置相机距离原点的最远距离
+//设置相机距离原点的最远距离
             controls.maxDistance = 200;
-            //是否开启右键拖拽
+//是否开启右键拖拽
             controls.enablePan = true;
         }
 
@@ -126,10 +145,10 @@
         }
 
         function animate() {
-            //更新控制器
+//更新控制器
             render();
 
-            //更新性能插件
+//更新性能插件
             stats.update();
 
             controls.update();
@@ -145,6 +164,7 @@
             spotLight.castShadow = true;
             scene.add(spotLight);
         }
+
         function draw() {
             initGui();
             initRender();
@@ -161,18 +181,11 @@
         }
 
     </script>
-    <script src="../static/js/jquery-2.0.3.min.js"></script>
-    <script src="../static/js/three.js"></script>
-    <script src="../static/js/TrackballControls.js"></script>
-    <script src="../static/js/DDSLoader.js"></script>
-    <script src="../static/js/OBJLoader.js"></script>
-    <script src="../static/js/OBJMTLLoader.js"></script>
-    <script src="../static/js/dat.gui.min.js"></script>
-    <script src="../static/js/stats.min.js"></script>
-    <script src="../static/js/OrbitControls.js"></script>
+
 </head>
 
-<body onload="draw();" id="one">
+
+<body onload="draw();">
 </body>
 
 </html>
